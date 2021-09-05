@@ -1,0 +1,32 @@
+parser: babel-eslint
+extends:
+  - airbnb
+  - airbnb/hooks
+  - plugin:prettier/recommended
+env:
+  browser: true
+plugins:
+  - simple-import-sort
+rules:
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error
+  sort-imports: off
+  import/no-duplicates:
+    - error
+    - considerQueryString: true
+  import/order: off
+  react/react-in-jsx-scope: off
+
+overrides:
+  - files: config/**/*.js
+    rules:
+      simple-import-sort/imports: off
+      import/order:
+        - error
+        - newlines-between: always
+      import/no-extraneous-dependencies: off
+
+settings:
+  import/resolver:
+    webpack:
+      config: 'config/webpack.common.js'
